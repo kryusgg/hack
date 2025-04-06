@@ -4,14 +4,333 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HACKER EXTRA TIGER</title>
-    <link rel="stylesheet" href="css/9NZryMQYb3Fb.css">
     <link rel="icon" href="TGeX8WP4PfAn.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            background-image: url('../images/background.png');
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            margin: 0;
+            background-color: #d3271a;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #d3271a;
+            background-image: url('../images/background.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 2rem 0;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            margin-top: 150px;
+        }
+
+        iframe {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .game-wrapper {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .banner {
+            margin-bottom: 1rem;
+            animation: levitate 4s ease-in-out infinite;
+        }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .board div {
+            width: 50px;
+            height: 50px;
+        }
+
+        .board img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .info {
+            margin-bottom: 1rem;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: none;
+        }
+
+        .status-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 1rem;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .status {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #00336a;
+            animation: fadeInOut 6s ease-in-out;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+            }
+            15%, 20% {
+                opacity: 1;
+            }
+        }
+
+        .generate-opportunity {
+            background-color: #4c6172;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .generate-opportunity:hover {
+            background-color: #37473a;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        input[type="email" i] {
+            padding: 10px 60px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        input[type="email" i]:focus {
+            border-color: #0099cc;
+            box-shadow: 0 0 8px #A8D1FF;
+        }
+
+        .playpix-iframe {
+            width: 100%;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .flashes {
+            list-style: none;
+            padding-left: 0;
+            width: 100%;
+            max-width: 300px;
+            margin-top: 1rem;
+        }
+
+        .flashes li {
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .info {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+
+        label {
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0069d9;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: #00336a;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes levitate {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hacking {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: #00336a;
+            display: none;
+        }
+
+        .hacking-message {
+            display: none;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #535f56;
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #566659;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: blinking 1.2s infinite;
+        }
+
+        @keyframes blinking {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .button {
+            background-color: #18136f;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: .55rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="banner" style="margin-top: 120%;">
-            <!-- Corrigido: Especificado tamanho da imagem -->
-            <img src="images/PE3jKxzOcCGY.webp" alt="Gerador de Mensagem" style="margin-top: 55px; max-width: 100%; height: auto;">
+            <img src="images/PE3jKxzOcCGY.webp" alt="Gerador de Mensagem" style="margin-top: 55px;">
         </div>
         <div id="message-wrapper" class="message-wrapper">
             <div id="hacking-message" class="message">
@@ -25,25 +344,14 @@
         <div style="margin: 8px 0;"></div>
         <button id="change-url" class="generate-opportunity" style="margin-top: 10px;">IR PARA JOGO</button>
         <div style="margin: 20px 0;"></div>
-
-        <!-- Corrigido: Substituído <centrt> por <center> -->
         <center>
             <iframe id="playpix-iframe" class="playpix-iframe" src="https://cassino.bet.br?ref=3eb84b40f9f2" height="550" frameborder="0"></iframe>
         </center>
         <div style="margin: 20px 0;"></div>
-
-        <!-- Corrigido: Link "NOSSO SUPORTE" -->
-        <a href="seu_link_aqui"><button class="button">NOSSO SUPORTE</button></a>
-        <div style="margin: 2px 0;"></div>
-
-        <p style="color:white;">Ao fazer o depósito, mande um print para o nosso suporte, você vai receber seu bônus!!</p>
-
+        <a href="#"><button class="button">NOSSO SUPORTE</button></a>
         <div style="margin: 22px 0;"></div>
-
-    </div> <!-- fim do div.container -->
-
-    <!-- Corrigido: Verifique se o arquivo JS existe -->
+        <p style="color:white;">Ao fazer o depósito, mande um print para o nosso suporte, você vai receber seu bônus!!</p>
+    </div>
     <script src="41k1YaKffeQQ.download"></script>
-
 </body>
 </html>
